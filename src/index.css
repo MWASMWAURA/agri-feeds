@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Space+Mono:wght@400;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 45 30% 96%;
+    --foreground: 30 20% 15%;
+
+    --card: 45 40% 92%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 45 30% 96%;
+    --popover-foreground: 30 20% 15%;
+
+    --primary: 142 50% 40%;
+    --primary-foreground: 45 30% 96%;
+
+    --secondary: 30 60% 55%;
+    --secondary-foreground: 30 20% 15%;
+
+    --muted: 45 20% 88%;
+    --muted-foreground: 30 15% 45%;
+
+    --accent: 15 80% 55%;
+    --accent-foreground: 45 30% 96%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 80%;
+    --input: 30 20% 80%;
+    --ring: 142 50% 40%;
+
+    --radius: 1rem;
+
+    /* Custom colors */
+    --farm-green: 142 50% 40%;
+    --farm-brown: 30 40% 35%;
+    --wheat-gold: 45 80% 60%;
+    --soil-dark: 30 30% 20%;
+    --sky-blue: 200 70% 65%;
+    --barn-red: 0 60% 45%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 30 20% 10%;
+    --foreground: 45 30% 96%;
+
+    --card: 30 25% 15%;
+    --card-foreground: 45 30% 96%;
+
+    --popover: 30 20% 10%;
+    --popover-foreground: 45 30% 96%;
+
+    --primary: 142 50% 50%;
+    --primary-foreground: 30 20% 10%;
+
+    --secondary: 30 50% 45%;
+    --secondary-foreground: 45 30% 96%;
+
+    --muted: 30 20% 20%;
+    --muted-foreground: 45 20% 65%;
+
+    --accent: 15 70% 50%;
+    --accent-foreground: 45 30% 96%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 30 20% 25%;
+    --input: 30 20% 25%;
+    --ring: 142 50% 50%;
+    
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Space Mono', monospace;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Archivo Black', sans-serif;
+  }
+}
+
+@layer components {
+  .text-stroke {
+    -webkit-text-stroke: 2px hsl(var(--foreground));
+    color: transparent;
+  }
+
+  .text-stroke-primary {
+    -webkit-text-stroke: 2px hsl(var(--primary));
+    color: transparent;
+  }
+
+  .wiggle-hover:hover {
+    animation: wiggle 0.5s ease-in-out;
+  }
+
+  .float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .bounce-slow {
+    animation: bounce-slow 2s ease-in-out infinite;
+  }
+
+  .spin-slow {
+    animation: spin 8s linear infinite;
+  }
+
+  .grain-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+  }
+}
+
+@layer utilities {
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+  }
+
+  @keyframes bounce-slow {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+  }
+
+  @keyframes marquee {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+  }
+
+  @keyframes scale-pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  .animate-marquee {
+    animation: marquee 60s linear infinite;
+  }
+
+  .animate-marquee:hover {
+    animation-play-state: paused;
+  }
+
+  .animate-scale-pulse {
+    animation: scale-pulse 2s ease-in-out infinite;
+  }
+}
